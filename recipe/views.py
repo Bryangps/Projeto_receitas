@@ -5,10 +5,8 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'recipe/pages/home.html')
+    return render(request, 'recipes/pages/home.html')
 
 
-def contato(request):
-    return HttpResponse("<h1>Contato Page</h1>")
 
 
