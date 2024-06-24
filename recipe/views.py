@@ -8,5 +8,6 @@ def home(request):
     return render(request, 'recipes/pages/home.html')
 
 
-
+def recipe(request, pk):
+    return render(request, 'recipes/pages/recipe-view.html')
 
