@@ -17,7 +17,8 @@ def category(request, category_id):
 
 
 def recipe(request, pk):
+    recipe = Recipe.objects.get(id=pk)
     return render(request, 'recipes/pages/recipe-view.html',
-                  {'recipe': make_recipe,
+                  {'recipe': recipe,
                    'is_detail_page': True})
 
