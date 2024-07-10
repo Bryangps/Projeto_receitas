@@ -12,12 +12,14 @@ def home(request):
 def category(request, category_id):
     recipes = get_list_or_404(Recipe.objects.filter(category__id=category_id, is_published=True).order_by('-id'))
     return render(request, 'recipes/pages/category.html',
-                  {'recipes': recipes})
+                  {'recipes': recipes,
+                   'title': f'Categoria | {recipes[0].category.name} | '})
 
 
 def recipe(request, pk):
-    recipe = Recipe.objects.filter(pk=pk, is_published=True).order_by('-id').first()
+    recipe = get_object_or_404(Recipe, pk=pk, is_published=True)
     return render(request, 'recipes/pages/recipe-view.html',
                   {'recipe': recipe,
-                   'is_detail_page': True})
+                   'is_detail_page': True,
+                   'title': f'{recipe.title} |'})
 
